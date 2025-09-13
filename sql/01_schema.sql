@@ -1,6 +1,6 @@
--- schema.sql (MySQL 8.0+)
+CREATE DATABASE IF NOT EXISTS proyectos_informaticos;
+USE proyectos_informaticos;
 
--- Limpieza
 DROP TRIGGER IF EXISTS tr_docente_after_update;
 DROP TRIGGER IF EXISTS tr_docente_after_delete;
 
@@ -72,10 +72,13 @@ DROP PROCEDURE IF EXISTS sp_docente_actualizar;
 DROP PROCEDURE IF EXISTS sp_docente_eliminar;
 
 DELIMITER $$
---Procedimiento: sp_docente_crear
---Descripción: Inserta un nuevo docente en la tabla docente
---Parametros de entrada: p_numero_documento,  p_nombres, p_titulo, p_anios_experiencia, p_direccion, p_tipo_docente)
--- Retorna: El id del docente creado (docente_id_creado)
+
+/*
+Procedimiento: sp_docente_crear
+Descripción: Inserta un nuevo docente en la tabla docente
+Parametros de entrada: p_numero_documento,  p_nombres, p_titulo, p_anios_experiencia, p_direccion, p_tipo_docente)
+Retorna: El id del docente creado (docente_id_creado)
+*/
 CREATE PROCEDURE sp_docente_crear(
   IN p_numero_documento VARCHAR(20),-- número de documento del docente
   IN p_nombres          VARCHAR(120),-- nombres completos del docente
@@ -90,19 +93,23 @@ BEGIN
   SELECT LAST_INSERT_ID() AS docente_id_creado;
 END$$
 
---Procedimiento: sp_docente_leer
---Descripción: consulta todos los datos de un docente especifico , a partir de un identificador, en este caso p_docente_id 
---Parametros de entrada: p_docente_id
---Retorna: fila con toda la info del docente
+/*
+Procedimiento: sp_docente_leer
+Descripción: consulta todos los datos de un docente especifico , a partir de un identificador, en este caso p_docente_id 
+Parametros de entrada: p_docente_id
+Retorna: fila con toda la info del docente
+*/
 CREATE PROCEDURE sp_docente_leer(IN p_docente_id INT)
 BEGIN
   SELECT * FROM docente WHERE docente_id = p_docente_id;
 END$$
 
---Procedimiento: sp_docente_actualizar
---Descripcion: Actualiza los datos de un docente existente
---Parametros de entrada: p_docente_id, p_numero_documento, p_nombres, p_titulo, p_anios_experiencia, p_direccion, p_tipo_docente
---Retorna: Todos los datos del docente luego de actualizar
+/*
+Procedimiento: sp_docente_actualizar
+Descripcion: Actualiza los datos de un docente existente
+Parametros de entrada: p_docente_id, p_numero_documento, p_nombres, p_titulo, p_anios_experiencia, p_direccion, p_tipo_docente
+Retorna: Todos los datos del docente luego de actualizar
+*/
 CREATE PROCEDURE sp_docente_actualizar(
   IN p_docente_id       INT,
   IN p_numero_documento VARCHAR(20),
@@ -123,10 +130,13 @@ BEGIN
    WHERE docente_id = p_docente_id;
   SELECT * FROM docente WHERE docente_id = p_docente_id;
 END$$
---Procedimiento: sp_docente_eliminar
---Descripcion: Elimina un docente de la base de datos a partir del id que recibe p_docente_id
--- parametro de entrada: p_docente_id
--- retorna: no retorna nada, el docente es eliminado
+
+/*
+Procedimiento: sp_docente_eliminar
+Descripcion: Elimina un docente de la base de datos a partir del id que recibe p_docente_id
+parametro de entrada: p_docente_id
+retorna: no retorna nada, el docente es eliminado
+*/
 CREATE PROCEDURE sp_docente_eliminar(IN p_docente_id INT)
 BEGIN
   DELETE FROM docente WHERE docente_id = p_docente_id;
