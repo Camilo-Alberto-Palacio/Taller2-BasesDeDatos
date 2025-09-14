@@ -1,6 +1,6 @@
 -- ===================================================================
 -- Archivo: 00_create_database.sql
--- Descripción: Crea la base de datos y la selecciona para su uso.
+-- Descripción:Se crea la base de datos y la selecciona para su uso.
 -- ===================================================================
 
 -- Crea la base de datos con el nombre 'proyectos_informaticos'.

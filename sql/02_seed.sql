@@ -1,6 +1,6 @@
 -- ====================================================================
 -- Archivo: 02_seed.sql
--- Descripción: Carga los datos iniciales y prueba los procedimientos y triggers.
+-- Descripción: Se carga los datos iniciales y prueba los procedimientos y triggers.
 -- ====================================================================
 
 -- --------------------------------------------------------------------
@@ -23,7 +23,7 @@ CALL sp_proyecto_crear('Chat Soporte TI', 'Chat universitario', '2025-02-01', '2
 
 
 -- --------------------------------------------------------------------
--- PASO 2: PROBAR EL TRIGGER DE ACTUALIZACIÓN (AUDITORÍA)
+-- PASO 2: SE PRUEBA EL TRIGGER DE ACTUALIZACIÓN (AUDITORÍA)
 -- --------------------------------------------------------------------
 
 -- Se actualiza el registro del docente 'Carlos Ruiz' usando 'sp_docente_actualizar'.
@@ -34,7 +34,7 @@ CALL sp_docente_actualizar(@id_carlos, 'CC1002', 'Carlos A. Ruiz', 'Esp. Base de
 
 
 -- --------------------------------------------------------------------
--- PASO 3: PROBAR EL TRIGGER DE ELIMINACIÓN (AUDITORÍA)
+-- PASO 3: SE PRUEBA EL TRIGGER DE ELIMINACIÓN (AUDITORÍA)
 -- --------------------------------------------------------------------
 
 -- Para poder eliminar a la docente 'Ana Gómez', primero se deben eliminar los registros
